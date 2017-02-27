@@ -4,7 +4,9 @@
 //==============================
 //    INCLUDES
 //==============================
-
+#include "Cell.h"
+#include "Cell_A.h"
+#include "Cell_B.h"
 
 /**
  * @class Gap
@@ -17,6 +19,7 @@ public:
 //==============================
 //    CONSTRUCTORS
 //==============================
+Gap(int x,int y, bool is_A);
 
 //==============================
 //    DESTRUCTOR
@@ -37,6 +40,7 @@ public:
 //==============================
 //    PUBLIC METHODS
 //==============================
+//void Cell_update();
 
 protected:
 //==============================
@@ -46,6 +50,12 @@ protected:
 //==============================
 //    ATTRIBUTES
 //==============================
+float A_init;
+static float D_;
+float* P_;
+int x_coord;
+int y_coord;
+Cell* C_;
 
 };
 

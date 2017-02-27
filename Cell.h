@@ -63,6 +63,11 @@ inline float Cell::get_death_P() const{
 inline float Cell::get_mutation_P() const{
   return mutation_Probability;
 }
+
+inline float* Cell::get_Phenotype() const{
+  return Phenotype;
+}
+
 //==============================
 //    SETTER DEFINITION
 //==============================

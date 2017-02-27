@@ -5,22 +5,25 @@
 //    INCLUDES
 //==============================
 
+#include "Cell.h"
 
 /**
  * @class Cell_B
  * @brief Creates a Cell_B
  */
 
-class Cell_B{
+class Cell_B : public Cell {
 	
 public:
 //==============================
 //    CONSTRUCTORS
 //==============================
+  Cell_B();
 
 //==============================
 //    DESTRUCTOR
 //==============================
+virtual ~Cell_B();
 
 //==============================
 //    GETTERS
@@ -37,6 +40,7 @@ public:
 //==============================
 //    PUBLIC METHODS
 //==============================
+virtual void Metabolic_Network;
 
 protected:
 //==============================
@@ -46,6 +50,8 @@ protected:
 //==============================
 //    ATTRIBUTES
 //==============================
+float RBB_;
+float RBC_;
 
 };
 

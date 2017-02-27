@@ -17,11 +17,11 @@ public:
 //==============================
 //    CONSTRUCTORS
 //==============================
-
+Cell();
 //==============================
 //    DESTRUCTOR
 //==============================
-
+virtual ~Cell();
 //==============================
 //    GETTERS
 //==============================
@@ -42,17 +42,19 @@ protected:
 //==============================
 //    PROTECTED METHODS
 //==============================
-
+virtual void Metabolic_Network() = 0;
 //==============================
 //    ATTRIBUTES
 //==============================
-
+float* Phenotype;
+float Fitness;
+static float death_Probability;
+static float mutation_Probability;
 };
 
 //==============================
 //    GETTER DEFINITION
 //==============================
-
 
 //==============================
 //    SETTER DEFINITION

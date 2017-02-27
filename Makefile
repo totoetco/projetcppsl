@@ -3,7 +3,7 @@ CFLAGS=-std=c++11
 all: main
 
 main: main.o Environment.o Gap.o Cell.o Cell_A.o Cell_B.o
-	g++ $(CFLAGS) -g main.o Environment.o Ĝap.o Cell.o Cell_A.o Cell_B.o -o main
+	g++ $(CFLAGS) -g main.o Environment.o Gap.o Cell.o Cell_A.o Cell_B.o -o main
 main.o: main.cpp Environment.h Gap.h Cell.h cell_A.h cell_B.h
 	g++ $(CFLAGS) -c main.cpp -g -o main.o
 Environment.o: Environment.cpp Environment.h

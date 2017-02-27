@@ -40,7 +40,7 @@ virtual ~Cell_B();
 //==============================
 //    PUBLIC METHODS
 //==============================
-virtual void Metabolic_Network;
+virtual float Metabolic_Network;
 
 protected:
 //==============================

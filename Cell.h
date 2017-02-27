@@ -42,7 +42,7 @@ protected:
 //==============================
 //    PROTECTED METHODS
 //==============================
-virtual void Metabolic_Network() = 0;
+virtual float Metabolic_Network(float i) = 0;
 //==============================
 //    ATTRIBUTES
 //==============================

@@ -37,6 +37,9 @@ virtual ~Cell();
 //==============================
 //    PUBLIC METHODS
 //==============================
+inline float get_death_P() const;
+inline float get_mutation_P() const;
+inline float* get_Phenotype() const;
 
 protected:
 //==============================
@@ -56,17 +59,11 @@ static float mutation_Probability;
 //==============================
 //    GETTER DEFINITION
 //==============================
-inline float Cell::get_death_P() const{
-  return death_Probability;
-}
+inline float Cell::get_death_P() const{return death_Probability;}
 
-inline float Cell::get_mutation_P() const{
-  return mutation_Probability;
-}
+inline float Cell::get_mutation_P() const{return mutation_Probability;}
 
-inline float* Cell::get_Phenotype() const{
-  return Phenotype;
-}
+inline float* Cell::get_Phenotype() const{return Phenotype;}
 
 //==============================
 //    SETTER DEFINITION

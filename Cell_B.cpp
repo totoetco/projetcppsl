@@ -14,8 +14,7 @@
 //==============================
 //    CONSTRUCTORS
 //==============================
-Cell_B::Cell_B()
-{
+Cell_B::Cell_B(){
 	Fitness=Phenotype[2];
 	RBB_=0.1;
 	RBC_=0.1;

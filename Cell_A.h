@@ -38,7 +38,7 @@ virtual ~Cell_A();
 //==============================
 //    PUBLIC METHODS
 //==============================
-virtual void Metabolic_Network();
+virtual float Metabolic_Network(float A_out);
 
 protected:
 //==============================

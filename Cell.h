@@ -56,7 +56,13 @@ static float mutation_Probability;
 //==============================
 //    GETTER DEFINITION
 //==============================
+inline float Cell::get_death_P() const{
+  return death_Probability;
+}
 
+inline float Cell::get_mutation_P() const{
+  return mutation_Probability;
+}
 //==============================
 //    SETTER DEFINITION
 //==============================

@@ -18,7 +18,7 @@ float Gap::D_ = 0.1;
 Gap::Gap(int x,int y, bool is_A){
 	x_coord=x;
 	y_coord=y;
-	A_init=25;                                // Valeur comprise entre 0 et 50, à modifier
+	A_init=25.0;                                // Valeur comprise entre 0 et 50, à modifier
 	float P_[3] = {A_init,0.0,0.0};
 	if(is_A){
 		Cell_A* cell = new Cell_A();

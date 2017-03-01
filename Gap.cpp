@@ -6,6 +6,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
+#include <time.h>
 
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
@@ -35,3 +36,14 @@ Gap::Gap(int x,int y, bool is_A){
 //==============================
 //    PUBLIC METHODS
 //==============================
+void Gap::Death_test(){
+	float n = 0;
+	srand(time(NULL));
+	n = (float)rand() / 1.0;
+	if(n<C_->get_death_P()) {
+		P_[0]+=C_->get_Phenotype()[0];
+		P_[1]+=C_->get_Phenotype()[1];
+		P_[2]+=C_->get_Phenotype()[2];
+	}
+	
+}

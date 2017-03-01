@@ -40,7 +40,7 @@ Gap(int x,int y, bool is_A);
 //==============================
 //    PUBLIC METHODS
 //==============================
-//void Cell_update();
+void Death_test();
 
 protected:
 //==============================

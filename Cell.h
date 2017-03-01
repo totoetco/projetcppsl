@@ -56,15 +56,15 @@ static float mutation_Probability;
 //==============================
 //    GETTER DEFINITION
 //==============================
-inline float Cell::get_death_P() const{
+inline float Cell::get_death_P(){
   return death_Probability;
 }
 
-inline float Cell::get_mutation_P() const{
+inline float Cell::get_mutation_P(){
   return mutation_Probability;
 }
 
-inline float* Cell::get_Phenotype() const{
+inline float* Cell::get_Phenotype(){
   return Phenotype;
 }
 

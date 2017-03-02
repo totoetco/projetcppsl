@@ -19,6 +19,10 @@ using namespace std;
 //==============================
 
 int main(int argc, char const *argv[]){
-	
+
+	Gap* gap1 = new Gap(1,2,true);
+	cout << "I have created a Gap" << endl;
+
+
 	return 0;
 }

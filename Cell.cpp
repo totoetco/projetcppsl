@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <vector>
+using namespace std;
 
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
@@ -18,7 +19,9 @@ float Cell::W_min = 0.001;
 //    CONSTRUCTORS
 //==============================
 Cell::Cell(){
-	float Phenotype[3] = {0.0,0.0,0.0};
+	Phenotype.push_back(0.0);
+	Phenotype.push_back(0.0);
+	Phenotype.push_back(0.0);
 	Fitness = 0.0;
 }
 //==============================

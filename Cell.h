@@ -4,7 +4,8 @@
 //==============================
 //    INCLUDES
 //==============================
-
+#include <vector>
+using namespace std;
 
 /**
  * @class Cell
@@ -39,7 +40,7 @@ virtual ~Cell();
 //==============================
 inline float get_death_P() const;
 inline float get_mutation_P() const;
-inline float* get_Phenotype() const;
+inline vector<float> get_Phenotype() const;
 
 protected:
 //==============================
@@ -49,7 +50,7 @@ virtual float Metabolic_Network(float i) = 0;
 //==============================
 //    ATTRIBUTES
 //==============================
-float* Phenotype;
+vector<float> Phenotype;
 float Fitness;
 static float W_min;
 static float death_Probability;
@@ -67,7 +68,7 @@ inline float Cell::get_mutation_P() const{
   return mutation_Probability;
 }
 
-inline float* Cell::get_Phenotype() const{
+inline vector<float> Cell::get_Phenotype() const{
   return Phenotype;
 }
 

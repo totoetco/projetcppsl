@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <time.h>
+using namespace std;
 
 //==============================
 //    DEFINITION STATIC ATTRIBUTES
@@ -27,6 +28,8 @@ Gap::Gap(int x,int y, bool is_A){
 		Cell_B* cell = new Cell_B();
 		C_ = cell;
 	}
+
+
 	
 }
 //==============================

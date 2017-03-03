@@ -28,12 +28,23 @@ Environment::Environment(){
       themap[i] = new Gap[W_];
       for (int j = 0; j < W_; j++){
       	bool randbool = rand() & 1;
-      	if (comptA_ <= Max_ && comptB_ <= Max_){
+      	if (comptA_ < Max_ && comptB_ < Max_){
       		themap[i][j].Set_Gap(i,j,randbool);
-      	} else if (comptA_ == Max_){
+      		if (randbool == true){
+      			comptA_++;
+      			cout << "CellA " << comptA_ << endl;
+      		} else {
+      			comptB_++;
+      			cout << "CellB " << comptB_ << endl;
+      		}
+      	} else if (comptA_ >= Max_){
       		themap[i][j].Set_Gap(i,j,false);
+      		comptB_++;
+      		cout << "CellB " << comptB_ << endl;
       	} else {
       		themap[i][j].Set_Gap(i,j,true);
+      		comptA_++;
+      		cout << "CellA " << comptA_ << endl;
       	}
       }	
    }

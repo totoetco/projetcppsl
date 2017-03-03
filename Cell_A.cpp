@@ -33,8 +33,8 @@ Cell_A::~Cell_A(){}
 
 float Cell_A::Metabolic_Network(float A_out){
 	A_out = A_out*(1-RAA_);
-	Phenotype.at(1) = Phenotype.at(1)*(1-RAB_) + A_out * RAA_;
-	Phenotype.at(1) = Phenotype.at(1) + Phenotype.at(1) * RAB_;
+	Phenotype.at(0)+=A_out*RAA_-Phenotype.at(0) * RAB_;
+	Phenotype.at(1)+=Phenotype.at(0)*RAB_;
 
 	//màj fitness
 	Fitness = Phenotype.at(1);

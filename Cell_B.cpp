@@ -34,8 +34,8 @@ Cell_B::~Cell_B(){}
 float Cell_B::Metabolic_Network(float B_out){
 	B_out=B_out*(1-RBB_);
 	//Phenotype[1]=B_out*RBB_+Phenotype[1]*(1-RBC_);
-	Phenotype.at(1)=B_out*RBB_+Phenotype.at(1)*(1-RBC_);
-	Phenotype.at(2)=Phenotype.at(2)+Phenotype.at(1)*RBC_;
+	Phenotype.at(1)+=B_out*RBB_-Phenotype.at(1)*RBC_;
+	Phenotype.at(2)+=Phenotype.at(1)*RBC_;
 	
 	//maj fitness + seuil minimal
 	Fitness = Phenotype.at(2);

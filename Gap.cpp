@@ -29,7 +29,7 @@ Gap::Gap(int x,int y, bool is_A){
 		C_ = cell;
 	}
 
-
+	cout << "I have created a Gap" << endl;
 	
 }
 //==============================

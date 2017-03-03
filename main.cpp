@@ -12,7 +12,8 @@
 #include "Cell_B.h"
 
 #include <iostream>
-using namespace std;
+using std::cout;
+using std::endl;
 
 //==============================
 //    MAIN

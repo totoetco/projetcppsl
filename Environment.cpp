@@ -6,7 +6,8 @@
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
-using namespace std;
+using std::cout;
+using std::endl;
 
 //==============================
 //    DEFINITION STATIC ATTRIBUTES

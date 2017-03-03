@@ -7,7 +7,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <vector>
-using namespace std;
+using std::cout;
+using std::endl;
 
 //==============================
 //    DEFINITION STATIC ATTRIBUTES

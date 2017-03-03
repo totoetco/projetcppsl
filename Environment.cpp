@@ -37,16 +37,19 @@ Environment::Environment(){
       	}
       }	
    }
-   for (int i = 0; i < H_; i++)
-      delete[] themap[i];
-   delete[] themap;
+
 
 	cout << "I have created an Environment" << endl;
 }
 //==============================
 //    DESTRUCTOR
 //==============================
-
+Environment::~Environment(){
+for (int i = 0; i < H_; i++){
+	delete[] themap[i];
+}
+delete[] themap;
+}
 //==============================
 //    PUBLIC METHODS
 //==============================

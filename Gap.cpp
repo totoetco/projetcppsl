@@ -17,10 +17,22 @@ float Gap::D_ = 0.1;
 //==============================
 //    CONSTRUCTORS
 //==============================
-Gap::Gap(int x,int y, bool is_A){
-	x_coord=x;
-	y_coord=y;
+Gap::Gap(){
 	A_init=25.0;                                // Valeur comprise entre 0 et 50, à modifier
+	cout << "I have created a Gap" << endl;
+	
+}
+//==============================
+//    DESTRUCTOR
+//==============================
+Gap::~Gap(){}
+//==============================
+//    PUBLIC METHODS
+//==============================
+
+void Gap::Set_Gap(int x,int y, bool is_A){
+	x_coord=x;
+	y_coord=y;                             // Valeur comprise entre 0 et 50, à modifier
 	float P_[3] = {A_init,0.0,0.0};
 	if(is_A){
 		Cell_A* cell = new Cell_A();
@@ -29,17 +41,8 @@ Gap::Gap(int x,int y, bool is_A){
 		Cell_B* cell = new Cell_B();
 		C_ = cell;
 	}
-
-	cout << "I have created a Gap" << endl;
-	
 }
-//==============================
-//    DESTRUCTOR
-//==============================
 
-//==============================
-//    PUBLIC METHODS
-//==============================
 void Gap::Death_test(){
 	float n = 0;
 	srand(time(NULL));

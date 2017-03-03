@@ -20,10 +20,6 @@ using std::endl;
 //==============================
 
 int main(int argc, char const *argv[]){
-
-	Gap* gap1 = new Gap(1,2,true);
 	Environment* env1 = new Environment();
-
-
 	return 0;
 }

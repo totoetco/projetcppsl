@@ -4,7 +4,7 @@
 //==============================
 //    INCLUDES
 //==============================
-
+#include "Gap.h"
 
 /**
  * @class Environment
@@ -51,6 +51,7 @@ unsigned int T_;
 const unsigned int t_sim = 10000;
 const unsigned int W_ = 32;
 const unsigned int H_ = 32;
+Gap **themap ;
 };
 
 //==============================

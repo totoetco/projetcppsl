@@ -7,6 +7,8 @@
 #include "Cell.h"
 #include "Cell_A.h"
 #include "Cell_B.h"
+#include <vector>
+using namespace std;
 
 /**
  * @class Gap
@@ -53,7 +55,7 @@ protected:
 //==============================
 float A_init;
 static float D_;
-float* P_;
+vector<float> P_;
 int x_coord;
 int y_coord;
 Cell* C_;

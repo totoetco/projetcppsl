@@ -21,12 +21,12 @@ Environment::Environment(){
 	srand(time(NULL));
 	T_ = 1000;
 	D_ = 0.1;
-	int Max_ = (W_ * H_)/2;
+	int Max_ = (W_ * H_)/2.0;
 	int comptA_ = 0;
 	int comptB_ = 0;
-   Gap **themap = new Gap*[H_];
+   themap = new Gap*[H_];
    for (int i = 0; i < H_; i++){
-      themap[i] = new Gap[W_];
+      this->themap[i] = new Gap[W_];
       for (int j = 0; j < W_; j++){
       	bool randbool = rand() & 1;
       	if (comptA_ < Max_ && comptB_ < Max_){
@@ -47,7 +47,7 @@ Environment::Environment(){
       		comptA_++;
       		cout << "CellA " << comptA_ << endl;
       	}
-      }	
+      }
    }
 
 
@@ -71,34 +71,41 @@ void Environment::Diffusion(int x, int y){
 	float C=themap[x][y].P_.at(2);
 	for(int i=(x-1);i<=(x+1);i++){
 		for(int j=(y-1);j<=(y+1);j++){
-			if(i<0){ 
-				i+=W_;
+			if((i<0)||(i>(W_-1))||(j<0)||(j>(H_-1))){
+				if(i<0){ 
+					i+=W_;
+					A+=themap[i][j].P_.at(0);
+					B+=themap[i][j].P_.at(1);
+					C+=themap[i][j].P_.at(2);
+					i-=W_;
+				}
+				if(i>(W_-1)){ 
+					i-=W_;
+					A+=themap[i][j].P_.at(0);
+					B+=themap[i][j].P_.at(1);
+					C+=themap[i][j].P_.at(2);
+					i+=W_;
+				}
+				if(j<0){ 
+					j+=H_;
+					A+=themap[i][j].P_.at(0);
+					B+=themap[i][j].P_.at(1);
+					C+=themap[i][j].P_.at(2);
+					j-=H_;
+				}
+				if(j>(H_-1)){ 
+					j-=H_;
+					A+=themap[i][j].P_.at(0);
+					B+=themap[i][j].P_.at(1);
+					C+=themap[i][j].P_.at(2);
+					j+=H_;
+				}
+			} else {
 				A+=themap[i][j].P_.at(0);
 				B+=themap[i][j].P_.at(1);
 				C+=themap[i][j].P_.at(2);
-				i-=W_;
 			}
-			if(i>W_-1){ 
-				i-=W_;
-				A+=themap[i][j].P_.at(0);
-				B+=themap[i][j].P_.at(1);
-				C+=themap[i][j].P_.at(2);
-				i+=W_;
-			}
-			if(j<0){ 
-				j+=H_;
-				A+=themap[i][j].P_.at(0);
-				B+=themap[i][j].P_.at(1);
-				C+=themap[i][j].P_.at(2);
-				j-=H_;
-			}
-			if(j>H_-1){ 
-				j-=H_;
-				A+=themap[i][j].P_.at(0);
-				B+=themap[i][j].P_.at(1);
-				C+=themap[i][j].P_.at(2);
-				j+=H_;
-			}
+			cout << i << j << endl;
 		}
 	}
 	themap[x][y].P_.at(0)=A-9*D_*themap[x][y].P_.at(0);
@@ -107,5 +114,10 @@ void Environment::Diffusion(int x, int y){
 }
 
 void Environment::Run(){
-	
+	for(int i=0;i<W_;i++){
+		for(int j=0;i<H_;j++){
+			Diffusion(i,j);
+			themap[i][j].Death_test();
+		}
+	}
 } 

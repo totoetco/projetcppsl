@@ -44,6 +44,7 @@ Gap();
 //==============================
 void Death_test();
 void Set_Gap(int x,int y, bool is_A);
+friend class Environment;
 
 protected:
 //==============================

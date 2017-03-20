@@ -39,7 +39,7 @@ Environment();
 //    PUBLIC METHODS
 //==============================
 void Diffusion(int x, int y);
-void Run();
+void Division();
 
 protected:
 //==============================

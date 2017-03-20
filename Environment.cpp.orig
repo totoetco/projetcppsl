@@ -47,7 +47,7 @@ Environment::Environment(){
       		comptA_++;
       		cout << "CellA " << comptA_ << endl;
       	}
-      }	
+      }
    }
 
 
@@ -113,6 +113,7 @@ void Environment::Diffusion(int x, int y){
 	themap[x][y].P_.at(2)=C-9*D_*themap[x][y].P_.at(2);
 }
 
+<<<<<<< HEAD
 void Environment::Run(){
 	for(int i=0;i<W_;i++){
 		for(int j=0;i<H_;j++){
@@ -121,6 +122,7 @@ void Environment::Run(){
 		}
 	}
 } 
+=======
 void Environment::Division(){
 	vector<int> x_empty,y_empty;
 	for(int i = 0; i <= (W_-1); i++){
@@ -131,3 +133,4 @@ void Environment::Division(){
 		}
 	}
 }
+>>>>>>> 8d7ecf2a93cbfd6c1bc08cca5f054f7bea2a31d6

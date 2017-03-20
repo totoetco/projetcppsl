@@ -42,6 +42,7 @@ inline float get_death_P() const;
 inline float get_mutation_P() const;
 inline vector<float> get_Phenotype() const;
 friend class Gap;
+friend class Environment;
 protected:
 //==============================
 //    PROTECTED METHODS

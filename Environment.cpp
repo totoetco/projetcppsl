@@ -84,3 +84,14 @@ void Environment::Diffusion(int x, int y){
 	themap[x][y].P_.at(1)=B-9*D_*themap[x][y].P_.at(1);
 	themap[x][y].P_.at(2)=C-9*D_*themap[x][y].P_.at(2);
 }
+
+void Environment::Division(){
+	vector<int> x_empty,y_empty;
+	for(int i = 0; i <= (W_-1); i++){
+		for(int j = 0; j <= (H_-1); j++){
+			if(themap[i][j].C_->Phenotype.at(0) == 0 && themap[i][j].C_->Phenotype.at(1) == 0 && themap[i][j].C_->Phenotype.at(2) == 0){
+
+			}
+		}
+	}
+}

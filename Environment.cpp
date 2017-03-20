@@ -71,35 +71,41 @@ void Environment::Diffusion(int x, int y){
 	float C=themap[x][y].P_.at(2);
 	for(int i=(x-1);i<=(x+1);i++){
 		for(int j=(y-1);j<=(y+1);j++){
-			if((i<0)||(i>(W_-1))||(j<0)||(j>(H_-1))){
-				if(i<0){ 
-					i+=W_;
-					A+=themap[i][j].P_.at(0);
-					B+=themap[i][j].P_.at(1);
-					C+=themap[i][j].P_.at(2);
-					i-=W_;
+			if((i<0)||(i>W_-1)||(j<0)||(j>H_-1)){
+				if((i<0)&&(j<0)){
+					A+=themap[i+W_][j+H_].P_.at(0);
+					B+=themap[i+W_][j+H_].P_.at(1);
+					C+=themap[i+W_][j+H_].P_.at(2);
+				} else if((i<0)&&(j>(H_-1))){
+					A+=themap[i+W_][j-H_].P_.at(0);
+					B+=themap[i+W_][j-H_].P_.at(1);
+					C+=themap[i+W_][j-H_].P_.at(2);
+				} else if((i>(W_-1))&&(j<0)){
+					A+=themap[i-W_][j+H_].P_.at(0);
+					B+=themap[i-W_][j+H_].P_.at(1);
+					C+=themap[i-W_][j+H_].P_.at(2);
+				} else if((i>(W_-1))&&(j>(H_-1))){
+					A+=themap[i-W_][j-H_].P_.at(0);
+					B+=themap[i-W_][j-H_].P_.at(1);
+					C+=themap[i-W_][j-H_].P_.at(2);
+				} else if(i<0){
+					A+=themap[i+W_][j].P_.at(0);
+					B+=themap[i+W_][j].P_.at(1);
+					C+=themap[i+W_][j].P_.at(2);
+				} else if(i>(W_-1)){
+					A+=themap[i-W_][j].P_.at(0);
+					B+=themap[i-W_][j].P_.at(1);
+					C+=themap[i-W_][j].P_.at(2);
+				} else if(j<0){
+					A+=themap[i][j+H_].P_.at(0);
+					B+=themap[i][j+H_].P_.at(1);
+					C+=themap[i][j+H_].P_.at(2);
+				} else if(j>(H_-1)){
+					A+=themap[i][j-H_].P_.at(0);
+					B+=themap[i][j-H_].P_.at(1);
+					C+=themap[i][j-H_].P_.at(2);
 				}
-				if(i>(W_-1)){ 
-					i-=W_;
-					A+=themap[i][j].P_.at(0);
-					B+=themap[i][j].P_.at(1);
-					C+=themap[i][j].P_.at(2);
-					i+=W_;
-				}
-				if(j<0){ 
-					j+=H_;
-					A+=themap[i][j].P_.at(0);
-					B+=themap[i][j].P_.at(1);
-					C+=themap[i][j].P_.at(2);
-					j-=H_;
-				}
-				if(j>(H_-1)){ 
-					j-=H_;
-					A+=themap[i][j].P_.at(0);
-					B+=themap[i][j].P_.at(1);
-					C+=themap[i][j].P_.at(2);
-					j+=H_;
-				}
+				
 			} else {
 				A+=themap[i][j].P_.at(0);
 				B+=themap[i][j].P_.at(1);

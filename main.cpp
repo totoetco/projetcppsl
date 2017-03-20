@@ -21,5 +21,6 @@ using std::endl;
 
 int main(int argc, char const *argv[]){
 	Environment* env1 = new Environment();
+	env1->Diffusion(5,5);
 	return 0;
 }

@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <time.h>
+#include <vector>
 using std::cout;
 using std::endl;
 
@@ -19,7 +20,7 @@ float Gap::D_ = 0.1;
 //==============================
 Gap::Gap(){
 	A_init=25.0;                                // Valeur comprise entre 0 et 50, à modifier
-	cout << "I have created a Gap" << endl;
+	//cout << "I have created a Gap" << endl;
 	
 }
 //==============================
@@ -33,7 +34,9 @@ Gap::~Gap(){}
 void Gap::Set_Gap(int x,int y, bool is_A){
 	x_coord=x;
 	y_coord=y;                             // Valeur comprise entre 0 et 50, à modifier
-	float P_[3] = {A_init,0.0,0.0};
+	P_.push_back(A_init);
+	P_.push_back(0.0);
+	P_.push_back(0.0);
 	if(is_A){
 		Cell_A* cell = new Cell_A();
 		C_ = cell;
@@ -48,9 +51,9 @@ void Gap::Death_test(){
 	srand(time(NULL));
 	n = (float)rand() / 1.0;
 	if(n<C_->get_death_P()) {
-		P_[0]+=C_->get_Phenotype()[0];
-		P_[1]+=C_->get_Phenotype()[1];
-		P_[2]+=C_->get_Phenotype()[2];
+		P_.at(0)+=C_->get_Phenotype().at(0);
+		P_.at(1)+=C_->get_Phenotype().at(1);
+		P_.at(2)+=C_->get_Phenotype().at(2);
 	}
 	
 }

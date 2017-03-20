@@ -38,6 +38,7 @@ Environment();
 //==============================
 //    PUBLIC METHODS
 //==============================
+void Diffusion(int x, int y);
 
 protected:
 //==============================
@@ -51,6 +52,7 @@ unsigned int T_;
 const unsigned int t_sim = 10000;
 const unsigned int W_ = 32;
 const unsigned int H_ = 32;
+float D_;
 Gap **themap ;
 };
 

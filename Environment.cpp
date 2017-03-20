@@ -71,6 +71,10 @@ void Environment::Diffusion(int x, int y){
 	float C=themap[x][y].P_.at(2);
 	for(int i=(x-1);i<=(x+1);i++){
 		for(int j=(y-1);j<=(y+1);j++){
+			if(i<0) i+=W_;
+			if(i>W_-1) i-=W_;
+			if(j<0) j+=H_;
+			if(j>H_-1) j-=H_;
 			A+=themap[i][j].P_.at(0);
 			B+=themap[i][j].P_.at(1);
 			C+=themap[i][j].P_.at(2);

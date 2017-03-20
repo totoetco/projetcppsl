@@ -21,8 +21,8 @@ using std::endl;
 
 int main(int argc, char const *argv[]){
 	Environment* env1 = new Environment();
-	env1->Division();
-	env1->Diffusion(0,0);
+	//env1->Diffusion(1,0);
+	env1->Run();
 	
 	return 0;
 }

@@ -120,8 +120,8 @@ void Environment::Diffusion(int x, int y){
 }
 
 void Environment::Run(){
-	for(int i=0;i<W_;i++){
-		for(int j=0;i<H_;j++){
+	for(int i=0;i<W_-1;i++){
+		for(int j=0;j<H_-1;j++){
 			Diffusion(i,j);
 			themap[i][j].Death_test();
 		}

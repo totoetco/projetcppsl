@@ -54,6 +54,9 @@ void Gap::Death_test(){
 		P_.at(0)+=C_->get_Phenotype().at(0);
 		P_.at(1)+=C_->get_Phenotype().at(1);
 		P_.at(2)+=C_->get_Phenotype().at(2);
+		C_->Phenotype.at(0) = 0;
+		C_->Phenotype.at(1) = 0;
+		C_->Phenotype.at(2) = 0;
 	}
 	
 }

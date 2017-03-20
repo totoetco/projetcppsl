@@ -106,6 +106,7 @@ void Environment::Diffusion(int x, int y){
 	themap[x][y].P_.at(2)=C-9*D_*themap[x][y].P_.at(2);
 }
 
+<<<<<<< HEAD
 void Environment::Division(){
 	vector<int> x_empty,y_empty;
 	for(int i = 0; i <= (W_-1); i++){
@@ -116,3 +117,8 @@ void Environment::Division(){
 		}
 	}
 }
+=======
+void Environment::Run(){
+	
+} 
+>>>>>>> 6e3808d4fb68679bd66b3a07e42c8018dc016ff1

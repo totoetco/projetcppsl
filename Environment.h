@@ -40,6 +40,7 @@ Environment();
 //==============================
 void Diffusion(int x, int y);
 void Division();
+void Run();
 
 protected:
 //==============================

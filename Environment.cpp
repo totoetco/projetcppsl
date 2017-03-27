@@ -128,14 +128,77 @@ void Environment::Run(){
 	}
 } 
 void Environment::Division(){
-	vector<int> x_empty,y_empty;
-	for(int i = 0; i <= (W_-1); i++){
-		for(int j = 0; j <= (H_-1); j++){
-			if(themap[i][j].C_->Phenotype.at(0) == 0 && themap[i][j].C_->Phenotype.at(1) == 0 && themap[i][j].C_->Phenotype.at(2) == 0){
-				//cout << "holaaa" << endl;
-				x_empty.push_back(i);
-				y_empty.push_back(j);
-			}
-		}
-	}
+   int x_ref,y_ref;
+   int fit_ref=0;
+   vector<int> x_empty,y_empty;
+   for(int i = 0; i <= (W_-1); i++){
+      for(int j = 0; j <= (H_-1); j++){
+         if(themap[i][j].C_->Death == true){
+            x_empty.push_back(i);
+            y_empty.push_back(j);
+         }
+      }
+   }
+
+   for(int i = 0; i <= x_empty.size(); i++){
+      for(int k=x_empty.at(i)-1;k<=x_empty.at(i)+1;k++){
+         for(int l=y_empty.at(i)-1;l<=y_empty.at(i)+1;l++){
+            if(k<0 && l<0){
+               if(themap[k+W_][l+H_].C_->Fitness>fit_ref){
+                  fit_ref = themap[k+W_][l+H_].C_->Fitness;
+                  x_ref = k+W_;
+                  y_ref = l+H_;
+               }
+            } else if((k<0)&&(l>(H_-1))){
+               if(themap[k+W_][l-H_].C_->Fitness>fit_ref){
+                  fit_ref = themap[k+W_][l-H_].C_->Fitness;
+                  x_ref = k+W_;
+                  y_ref = l-H_;
+               }
+            } else if((k>(W_-1))&&(l<0)){
+               if(themap[k-W_][l+H_].C_->Fitness>fit_ref){
+                  fit_ref = themap[k-W_][l+H_].C_->Fitness;
+                  x_ref = k-W_;
+                  y_ref = l+H_;
+               }
+            } else if((k>(W_-1))&&(l>(H_-1))){
+               if(themap[k-W_][l-H_].C_->Fitness>fit_ref){
+                  fit_ref = themap[k-W_][l-H_].C_->Fitness;
+                  x_ref = k-W_;
+                  y_ref = l-H_;
+               }
+            } else if(k<0){
+               if(themap[k+W_][l].C_->Fitness>fit_ref){
+                  fit_ref = themap[k+W_][l].C_->Fitness;
+                  x_ref = k+W_;
+                  y_ref = l;
+               }
+            } else if(k>(W_-1)){
+               if(themap[k-W_][l].C_->Fitness>fit_ref){
+                  fit_ref = themap[k-W_][l].C_->Fitness;
+                  x_ref = k-W_;
+                  y_ref = l;
+               }
+            } else if(l<0){
+               if(themap[k][l+H_].C_->Fitness>fit_ref){
+                  fit_ref = themap[k][l+H_].C_->Fitness;
+                  x_ref = k;
+                  y_ref = l+H_;
+               }
+            } else if(l>(H_-1)){
+               if(themap[k][l-H_].C_->Fitness>fit_ref){
+                  fit_ref = themap[k][l-H_].C_->Fitness;
+                  x_ref = k;
+                  y_ref = l-H_;
+               }
+            } else {
+                if(themap[k][l].C_->Fitness>fit_ref){
+                  fit_ref = themap[k][l].C_->Fitness;
+                  x_ref = k;
+                  y_ref = l;
+            }        
+         }
+      }
+     
+   }
 }

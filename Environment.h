@@ -5,11 +5,13 @@
 //    INCLUDES
 //==============================
 #include "Gap.h"
+#include <string>
+#include <iostream>
+using std::cout;
+using std::endl;
 
-/**
- * @class Environment
- * @brief Creates a Environment
- */
+#define BOLDBLUE    "\033[1m\033[34m"      /* Bold Blue */
+#define BOLDRED     "\033[1m\033[31m"      /* Bold Red */
 
 class Environment{
 	
@@ -41,6 +43,7 @@ Environment();
 void Diffusion(int x, int y);
 void Division();
 void Run();
+void Display(Gap **plotmap_);
 
 protected:
 //==============================

@@ -46,6 +46,7 @@ Environment();
 //==============================
 void Diffusion(int x, int y);
 void Division();
+void Mutation();
 void Run();
 void Display();
 void clear_Env();

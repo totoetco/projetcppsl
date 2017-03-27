@@ -141,7 +141,7 @@ void Environment::Division(){
    }
 
    for(int i = 0; i <= x_empty.size(); i++){
-      for(int k=x_empty.at(i)-1;k<=x_empty.at(i)+1;k++){
+      for(int k=x_empty.at(i)-1;k<=x_empty.at(i)+1;k++){ // To be replaced by a random selection
          for(int l=y_empty.at(i)-1;l<=y_empty.at(i)+1;l++){
             if(k<0 && l<0){
                if(themap[k+W_][l+H_].C_->Fitness>fit_ref){
@@ -197,7 +197,15 @@ void Environment::Division(){
                   x_ref = k;
                   y_ref = l;
                }
-            }        
+            }
+
+            themap[x_empty.at(i)][y_empty.at(i)].C_->Phenotype.at(0) = themap[x_ref][y_ref].C_->Phenotype.at(0)/2;
+            themap[x_empty.at(i)][y_empty.at(i)].C_->Phenotype.at(0) = themap[x_ref][y_ref].C_->Phenotype.at(1)/2;
+            themap[x_empty.at(i)][y_empty.at(i)].C_->Phenotype.at(0) = themap[x_ref][y_ref].C_->Phenotype.at(2)/2;
+
+            themap[x_ref][y_ref].C_->Phenotype.at(0) = themap[x_ref][y_ref].C_->Phenotype.at(0)/2;
+            themap[x_ref][y_ref].C_->Phenotype.at(1) = themap[x_ref][y_ref].C_->Phenotype.at(1)/2;
+            themap[x_ref][y_ref].C_->Phenotype.at(2) = themap[x_ref][y_ref].C_->Phenotype.at(2)/2;
          }
       }
    }

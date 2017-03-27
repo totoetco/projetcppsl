@@ -133,7 +133,7 @@ void Environment::Division(){
    vector<int> x_empty,y_empty;
    for(int i = 0; i <= (W_-1); i++){
       for(int j = 0; j <= (H_-1); j++){
-         if(themap[i][j].C_->Death == true){
+         if(themap[i][j].Death_test() == false){
             x_empty.push_back(i);
             y_empty.push_back(j);
          }
@@ -196,9 +196,9 @@ void Environment::Division(){
                   fit_ref = themap[k][l].C_->Fitness;
                   x_ref = k;
                   y_ref = l;
+               }
             }        
          }
       }
-     
    }
 }

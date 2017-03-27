@@ -46,8 +46,9 @@ void Gap::Set_Gap(int x,int y, bool is_A){
 	}
 }
 
-void Gap::Death_test(){
+bool Gap::Death_test(){
 	float n = 0;
+	bool alive = true;
 	srand(time(NULL));
 	n = (float)rand() / 1.0;
 	if(n<C_->get_death_P()) {
@@ -57,6 +58,7 @@ void Gap::Death_test(){
 		C_->Phenotype.at(0) = 0;
 		C_->Phenotype.at(1) = 0;
 		C_->Phenotype.at(2) = 0;
+		alive = false;
 	}
-	
+	return alive;
 }

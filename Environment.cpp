@@ -8,6 +8,7 @@
 #include <iostream>
 #include <time.h>
 #include <cassert>
+#include <vector>
 using std::cout;
 using std::endl;
 
@@ -122,6 +123,7 @@ void Environment::Run(){
 				}
 			}
 			Division();
+         Mutation();
 			for(int i=0;i<W_-1;i++){
 				for(int j=0;j<H_-1;j++){
 					if(themap[i][j].C_->isA) themap[i][j].C_->Metabolic_Network(themap[i][j].P_.at(0));
@@ -212,12 +214,12 @@ void Environment::Division(){
             delete themap[x_empty.at(i)][y_empty.at(i)].C_;
             assert(themap[x_ref][y_ref].C_ != NULL);
             if(themap[x_ref][y_ref].C_->isA){
-				Cell_A* cell = new Cell_A();
-				themap[x_empty.at(i)][y_empty.at(i)].C_ = cell;
-			}else{
-				Cell_B* cell = new Cell_B();
-				themap[x_empty.at(i)][y_empty.at(i)].C_ = cell;
-			}
+				  Cell_A* cell = new Cell_A();
+				  themap[x_empty.at(i)][y_empty.at(i)].C_ = cell;
+			   }else{
+				  Cell_B* cell = new Cell_B();
+				  themap[x_empty.at(i)][y_empty.at(i)].C_ = cell;
+			   }
 
             themap[x_empty.at(i)][y_empty.at(i)].C_->Phenotype.at(0) = themap[x_ref][y_ref].C_->Phenotype.at(0)/2;
             themap[x_empty.at(i)][y_empty.at(i)].C_->Phenotype.at(1) = themap[x_ref][y_ref].C_->Phenotype.at(1)/2;
@@ -232,6 +234,27 @@ void Environment::Division(){
    }
    x_empty.clear();
    y_empty.clear();
+}
+
+void Environment::Mutation(){
+   for(int i = 0; i <= H_-1; i++){
+      for(int j = 0; j<= W_-1; j++){
+         if(themap[i][j].Mutation_test() == true){
+            vector<float> meta = themap[i][j].C_-> Phenotype;
+            if(themap[i][j].C_->isA){
+              delete themap[i][j].C_;
+              Cell_B* cell = new Cell_B();
+              themap[i][j].C_ = cell;
+              themap[i][j].C_->Phenotype = meta;
+            }else{
+              delete themap[i][j].C_;
+              Cell_A* cell = new Cell_A();
+              themap[i][j].C_ = cell;
+              themap[i][j].C_->Phenotype = meta;
+            }
+         }
+      }
+   }
 }
 
 void Environment::clear_Env(){

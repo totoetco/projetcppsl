@@ -41,6 +41,7 @@ Environment();
 void Diffusion(int x, int y);
 void Division();
 void Run();
+void Display(Gap **plotmap_);
 void clear_Env();
 
 protected:

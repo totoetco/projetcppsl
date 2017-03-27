@@ -19,9 +19,7 @@ float Gap::D_ = 0.1;
 //    CONSTRUCTORS
 //==============================
 Gap::Gap(){
-	A_init=25.0;                                // Valeur comprise entre 0 et 50, à modifier
-	//cout << "I have created a Gap" << endl;
-	
+	A_init=25.0;                                // Valeur comprise entre 0 et 50, à modifier	
 }
 //==============================
 //    DESTRUCTOR

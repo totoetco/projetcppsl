@@ -33,25 +33,19 @@ Environment::Environment(){
       		themap[i][j].Set_Gap(i,j,randbool);
       		if (randbool == true){
       			comptA_++;
-      			cout << "CellA " << comptA_ << endl;
       		} else {
       			comptB_++;
-      			cout << "CellB " << comptB_ << endl;
       		}
       	} else if (comptA_ >= Max_){
       		themap[i][j].Set_Gap(i,j,false);
       		comptB_++;
-      		cout << "CellB " << comptB_ << endl;
       	} else {
       		themap[i][j].Set_Gap(i,j,true);
       		comptA_++;
-      		cout << "CellA " << comptA_ << endl;
       	}
       }	
    }
 
-
-	cout << "I have created an Environment" << endl;
 }
 //==============================
 //    DESTRUCTOR
@@ -111,7 +105,6 @@ void Environment::Diffusion(int x, int y){
 				B+=themap[i][j].P_.at(1);
 				C+=themap[i][j].P_.at(2);
 			}
-			cout << i << j << endl;
 		}
 	}
 	themap[x][y].P_.at(0)=A-9*D_*themap[x][y].P_.at(0);
@@ -120,16 +113,25 @@ void Environment::Diffusion(int x, int y){
 }
 
 void Environment::Run(){
-	for(int i=0;i<W_-1;i++){
-		for(int j=0;j<H_-1;j++){
-			Diffusion(i,j);
-		}
-	}
-	Division();
-	for(int i=0;i<W_-1;i++){
-		for(int j=0;j<H_-1;j++){
-			if(themap[i][j].C_->isA) themap[i][j].C_->Metabolic_Network(themap[i][j].P_.at(0));
-			else  themap[i][j].C_->Metabolic_Network(themap[i][j].P_.at(1));
+	int T=0;
+	for(int t=0;t<t_sim;t++){
+		if(T<T_){
+			for(int i=0;i<W_-1;i++){
+				for(int j=0;j<H_-1;j++){
+					Diffusion(i,j);
+				}
+			}
+			Division();
+			for(int i=0;i<W_-1;i++){
+				for(int j=0;j<H_-1;j++){
+					if(themap[i][j].C_->isA) themap[i][j].C_->Metabolic_Network(themap[i][j].P_.at(0));
+					else  themap[i][j].C_->Metabolic_Network(themap[i][j].P_.at(1));
+				}
+			}
+			T+=1;
+		} else {
+			clear_Env();
+			T=0;
 		}
 	}
 } 
@@ -206,13 +208,30 @@ void Environment::Division(){
             }
 
             themap[x_empty.at(i)][y_empty.at(i)].C_->Phenotype.at(0) = themap[x_ref][y_ref].C_->Phenotype.at(0)/2;
-            themap[x_empty.at(i)][y_empty.at(i)].C_->Phenotype.at(0) = themap[x_ref][y_ref].C_->Phenotype.at(1)/2;
-            themap[x_empty.at(i)][y_empty.at(i)].C_->Phenotype.at(0) = themap[x_ref][y_ref].C_->Phenotype.at(2)/2;
+            themap[x_empty.at(i)][y_empty.at(i)].C_->Phenotype.at(1) = themap[x_ref][y_ref].C_->Phenotype.at(1)/2;
+            themap[x_empty.at(i)][y_empty.at(i)].C_->Phenotype.at(2) = themap[x_ref][y_ref].C_->Phenotype.at(2)/2;
 
             themap[x_ref][y_ref].C_->Phenotype.at(0) = themap[x_ref][y_ref].C_->Phenotype.at(0)/2;
             themap[x_ref][y_ref].C_->Phenotype.at(1) = themap[x_ref][y_ref].C_->Phenotype.at(1)/2;
             themap[x_ref][y_ref].C_->Phenotype.at(2) = themap[x_ref][y_ref].C_->Phenotype.at(2)/2;
+            
+            x_empty.clear();
+            y_empty.clear();
+            
          }
       }
    }
+}
+
+void Environment::clear_Env(){
+	for(int i=0;i<W_-1;i++){
+		for(int j=0;j<H_-1;j++){
+			themap[i][j].P_.at(0)=themap[i][j].A_init;
+			themap[i][j].P_.at(1)=0;
+			themap[i][j].P_.at(2)=0;
+			themap[i][j].C_->Phenotype.at(0)=0;
+			themap[i][j].C_->Phenotype.at(1)=0;
+			themap[i][j].C_->Phenotype.at(2)=0;
+		}
+	}
 }

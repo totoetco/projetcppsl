@@ -10,6 +10,8 @@
 #include "Cell.h"
 #include "Cell_A.h"
 #include "Cell_B.h"
+#include <time.h>
+#include <stdlib.h>
 
 #include <iostream>
 using std::cout;
@@ -20,6 +22,7 @@ using std::endl;
 //==============================
 
 int main(int argc, char const *argv[]){
+	srand(time(NULL));
 	Environment* env1 = new Environment();
 	env1->Run();
 	return 0;

@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <time.h>
+#include <stdlib.h>
 #include <vector>
 using std::cout;
 using std::endl;
@@ -45,10 +46,9 @@ void Gap::Set_Gap(int x,int y, bool is_A){
 }
 
 bool Gap::Death_test(){
-	float n = 0;
+	double n = 0;
 	bool alive = true;
-	srand(time(NULL));
-	n = (float)rand() / 1.0;
+	n = (double)rand() / (double)RAND_MAX;
 	if(n<C_->get_death_P()) {
 		P_.at(0)+=C_->get_Phenotype().at(0);
 		P_.at(1)+=C_->get_Phenotype().at(1);

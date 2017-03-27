@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <time.h>
+#include <cassert>
 using std::cout;
 using std::endl;
 
@@ -127,6 +128,7 @@ void Environment::Run(){
 					else  themap[i][j].C_->Metabolic_Network(themap[i][j].P_.at(1));
 				}
 			}
+			if(t%10==0) Display();
 			T+=1;
 		} else {
 			clear_Env();
@@ -135,7 +137,8 @@ void Environment::Run(){
 	}
 } 
 void Environment::Division(){
-   int x_ref,y_ref;
+   int x_ref=0;
+   int y_ref=0;
    int fit_ref=0;
    vector<int> x_empty,y_empty;
    for(int i = 0; i <= (W_-1); i++){
@@ -199,12 +202,22 @@ void Environment::Division(){
                   y_ref = l-H_;
                }
             } else {
-                if(themap[k][l].C_->Fitness>fit_ref){
+                if(themap[k][l].C_->Fitness>=fit_ref){
                   fit_ref = themap[k][l].C_->Fitness;
                   x_ref = k;
                   y_ref = l;
                }
             }
+            assert(themap[x_empty.at(i)][y_empty.at(i)].C_ != NULL);
+            delete themap[x_empty.at(i)][y_empty.at(i)].C_;
+            assert(themap[x_ref][y_ref].C_ != NULL);
+            if(themap[x_ref][y_ref].C_->isA){
+				Cell_A* cell = new Cell_A();
+				themap[x_empty.at(i)][y_empty.at(i)].C_ = cell;
+			}else{
+				Cell_B* cell = new Cell_B();
+				themap[x_empty.at(i)][y_empty.at(i)].C_ = cell;
+			}
 
             themap[x_empty.at(i)][y_empty.at(i)].C_->Phenotype.at(0) = themap[x_ref][y_ref].C_->Phenotype.at(0)/2;
             themap[x_empty.at(i)][y_empty.at(i)].C_->Phenotype.at(1) = themap[x_ref][y_ref].C_->Phenotype.at(1)/2;
@@ -212,14 +225,13 @@ void Environment::Division(){
 
             themap[x_ref][y_ref].C_->Phenotype.at(0) = themap[x_ref][y_ref].C_->Phenotype.at(0)/2;
             themap[x_ref][y_ref].C_->Phenotype.at(1) = themap[x_ref][y_ref].C_->Phenotype.at(1)/2;
-            themap[x_ref][y_ref].C_->Phenotype.at(2) = themap[x_ref][y_ref].C_->Phenotype.at(2)/2;
-            
-            x_empty.clear();
-            y_empty.clear();
+            themap[x_ref][y_ref].C_->Phenotype.at(2) = themap[x_ref][y_ref].C_->Phenotype.at(2)/2;          
             
          }
       }
    }
+   x_empty.clear();
+   y_empty.clear();
 }
 
 void Environment::clear_Env(){
@@ -236,15 +248,16 @@ void Environment::clear_Env(){
 }
 
 
-void Environment::Display(Gap **plotmap_){
+void Environment::Display(){
+	std::system("clear");
 	for(int i = 0; i <= (W_-1); i++){
       for(int j = 0; j <= (H_-1); j++){
-      	if(plotmap_[i][j].C_->isA == true){
-      		cout << BOLDRED << "A";
+      	if(themap[i][j].C_->isA == true){
+      		cout << BOLDRED << "A " ;
       	} else {
-      		cout << BOLDBLUE << "B";
+      		cout << BOLDBLUE << "B " ;
       	}
       }
-      cout << " " << endl;
+      cout << "" << endl;
     }
 }

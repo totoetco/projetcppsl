@@ -123,7 +123,13 @@ void Environment::Run(){
 	for(int i=0;i<W_-1;i++){
 		for(int j=0;j<H_-1;j++){
 			Diffusion(i,j);
-			themap[i][j].Death_test();
+		}
+	}
+	Division();
+	for(int i=0;i<W_-1;i++){
+		for(int j=0;j<H_-1;j++){
+			if(themap[i][j].C_->isA) themap[i][j].C_->Metabolic_Network(themap[i][j].P_.at(0));
+			else  themap[i][j].C_->Metabolic_Network(themap[i][j].P_.at(1));
 		}
 	}
 } 
@@ -140,7 +146,7 @@ void Environment::Division(){
       }
    }
 
-   for(int i = 0; i <= x_empty.size(); i++){
+   for(int i = 0; i < x_empty.size(); i++){
       for(int k=x_empty.at(i)-1;k<=x_empty.at(i)+1;k++){ // To be replaced by a random selection
          for(int l=y_empty.at(i)-1;l<=y_empty.at(i)+1;l++){
             if(k<0 && l<0){

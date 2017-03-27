@@ -25,6 +25,7 @@ Cell::Cell(){
 	Phenotype.push_back(0.0);
 	Phenotype.push_back(0.0);
 	Fitness = 0.0;
+	isA=true;
 }
 //==============================
 //    DESTRUCTOR

@@ -53,6 +53,7 @@ virtual float Metabolic_Network(float i) = 0;
 //==============================
 vector<float> Phenotype;
 float Fitness;
+bool isA;
 static float W_min;
 static float death_Probability;
 static float mutation_Probability;

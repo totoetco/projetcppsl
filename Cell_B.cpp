@@ -22,6 +22,7 @@ Cell_B::Cell_B(){
 	Fitness = Phenotype.at(1);
 	RBB_=0.1;
 	RBC_=0.1;
+	isA=false;
 }
 
 //==============================

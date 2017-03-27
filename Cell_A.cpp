@@ -21,6 +21,7 @@ Cell_A::Cell_A(){
 	Fitness = Phenotype.at(1);
 	RAA_ = 0.1 ;
 	RAB_ = 0.1 ;
+	isA=true;
 }
 
 //==============================

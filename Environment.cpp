@@ -221,9 +221,9 @@ void Environment::Display(Gap **plotmap_){
 	for(int i = 0; i <= (W_-1); i++){
       for(int j = 0; j <= (H_-1); j++){
       	if(plotmap_[i][j].C_->isA == true){
-      		cout << BOLDRED << A << RESET;
+      		cout << BOLDRED << "A";
       	} else {
-      		cout << BOLDBLUE << B << RESET;
+      		cout << BOLDBLUE << "B";
       	}
       }
       cout << " " << endl;

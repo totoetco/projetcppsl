@@ -60,3 +60,14 @@ bool Gap::Death_test(){
 	}
 	return alive;
 }
+
+bool Gap::Mutation_test(){
+	double n = 0;
+	bool mutation = false;
+	n = (double)rand() / (double)RAND_MAX;
+	if(n < C_->get_mutation_P()) {
+		
+		mutation = true;
+	}
+	return mutation;
+}

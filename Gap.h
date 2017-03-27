@@ -43,6 +43,7 @@ Gap();
 //    PUBLIC METHODS
 //==============================
 bool Death_test();
+bool Mutation_test();
 void Set_Gap(int x,int y, bool is_A);
 friend class Environment;
 

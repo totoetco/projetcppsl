@@ -16,6 +16,5 @@ for(i in 1:length(unique(col1.sorted))){ # de 1 à 2
   }
 }
 colfunc <- colorRampPalette(c("green","yellow","orange","red"))
-plot(rep(1,30),col=colfunc(30),pch=19,cex=3)
-heatmap(m,Rowv = NA, Colv = NA,main = "Magnifique Plot",col = colfunc(20))
-                                                          
+plot(rep(1,15),col=colfunc(15),pch=19,cex=3)
+heatmap(m,Rowv = NA, Colv = NA,main = "Magnifique Plot",col = colfunc(15))

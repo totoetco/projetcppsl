@@ -1,1 +1,5 @@
+install.packages("plotly")
+library(plotly)
+packageVersion('plotly')
 a = read.table("output.txt", dec = ".", header = TRUE,sep = ",")
+p <- plot_ly(z = volcano, type = "heatmap")

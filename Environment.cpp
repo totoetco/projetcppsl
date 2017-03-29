@@ -21,7 +21,7 @@ using std::endl;
 //==============================
 Environment::Environment(){
 	srand(time(NULL));
-	T_ = 100;
+	T_ = 1000;
 	D_ = 0.1;
 	int Max_ = (W_ * H_)/2.0;
 	int comptA_ = 0;
@@ -155,6 +155,7 @@ void Environment::Run(){
 	ratiocell = ratiocell/1024; //percentage of A cell at the end of simulation.
 	cout << "T - value" << "," << "A_init" << ","<< "ratiocellfinal" << endl;
     cout << T_ << "," << Gap().A_init << ","<< ratiocell << endl;
+    fclose (stdout);
 } 
 
 void Environment::Division(){
@@ -295,9 +296,9 @@ void Environment::Display(){
 	for(int i = 0; i <= (W_-1); i++){
       for(int j = 0; j <= (H_-1); j++){
       	if(themap[i][j].C_->isA == true){
-      		cout << BOLDRED << "A " ;
+      		cout << BOLDRED << "A " << RESET;
       	} else {
-      		cout << BOLDBLUE << "B " ;
+      		cout << BOLDBLUE << "B " << RESET;
       	}
       }
       cout << "" << endl;

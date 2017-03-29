@@ -11,6 +11,7 @@ using std::cout;
 using std::endl;
 #define BOLDBLUE "\033[1m\033[34m"
 #define BOLDRED "\033[1m\033[31m"
+#define RESET   "\033[0m"
 
 /**
  * @class Environment

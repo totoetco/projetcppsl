@@ -21,7 +21,7 @@ using std::endl;
 //==============================
 Environment::Environment(){
 	srand(time(NULL));
-	T_ = 1000;
+	T_ = 100;
 	D_ = 0.1;
 	int Max_ = (W_ * H_)/2.0;
 	int comptA_ = 0;
@@ -114,7 +114,9 @@ void Environment::Diffusion(int x, int y){
 }
 
 void Environment::Run(){
-	int T=0;
+    freopen("output.txt","w",stdout);
+	int T = 0;
+	float ratiocell = 0;
 	for(int t=0;t<t_sim;t++){
 		if(T<T_){
 			for(int i=0;i<W_-1;i++){
@@ -126,18 +128,35 @@ void Environment::Run(){
          Mutation();
 			for(int i=0;i<W_-1;i++){
 				for(int j=0;j<H_-1;j++){
-					if(themap[i][j].C_->isA) themap[i][j].C_->Metabolic_Network(themap[i][j].P_.at(0));
-					else  themap[i][j].C_->Metabolic_Network(themap[i][j].P_.at(1));
+					if(themap[i][j].C_->isA){
+						themap[i][j].C_->Metabolic_Network(themap[i][j].P_.at(0));
+					}
+					else{
+						themap[i][j].C_->Metabolic_Network(themap[i][j].P_.at(1));
+					}
 				}
 			}
-			if(t%10==0) Display();
+			//if(t%20==0) Display();
 			T+=1;
 		} else {
 			clear_Env();
 			T=0;
 		}
 	}
+
+	for(int i=0;i<W_-1;i++){
+				for(int j=0;j<H_-1;j++){
+					if(themap[i][j].C_->isA){
+						ratiocell = ratiocell + 1;
+					}
+				}
+	}
+
+	ratiocell = ratiocell/1024; //percentage of A cell at the end of simulation.
+	cout << "T - value" << "," << "A_init" << ","<< "ratiocellfinal" << endl;
+    cout << T_ << "," << Gap().A_init << ","<< ratiocell << endl;
 } 
+
 void Environment::Division(){
    int x_ref=0;
    int y_ref=0;

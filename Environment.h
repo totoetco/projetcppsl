@@ -25,6 +25,7 @@ public:
 //    CONSTRUCTORS
 //==============================
 Environment();
+Environment(float Ainit, float T);
 //==============================
 //    DESTRUCTOR
 //==============================
@@ -65,6 +66,7 @@ const unsigned int t_sim = 10000;
 const unsigned int W_ = 32;
 const unsigned int H_ = 32;
 float D_;
+float A_init;
 Gap **themap ;
 };
 

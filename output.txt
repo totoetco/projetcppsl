@@ -1,2 +1,2 @@
 T - value,A_init,ratiocellfinal
-1000,25,0.319336
+1000,35.5,0.405273

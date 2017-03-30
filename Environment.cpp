@@ -19,6 +19,40 @@ using std::endl;
 //==============================
 //    CONSTRUCTORS
 //==============================
+Environment::Environment(float Ainit, float T){
+   srand(time(NULL));
+   T_ = T;
+   A_init = Ainit;
+   D_ = 0.1;
+   int Max_ = (W_ * H_)/2.0;
+   int comptA_ = 0;
+   int comptB_ = 0;
+   themap = new Gap*[H_];
+   for (int i = 0; i < H_; i++){
+      this->themap[i] = new Gap[W_];
+      for (int j = 0; j < W_; j++){
+         bool randbool = rand() & 1;
+         if (comptA_ < Max_ && comptB_ < Max_){
+            themap[i][j].P_.push_back(A_init);
+            themap[i][j].Set_Gap(i,j,randbool);
+            if (randbool == true){
+               comptA_++;
+            } else {
+               comptB_++;
+            }
+         } else if (comptA_ >= Max_){
+            themap[i][j].P_.push_back(A_init);
+            themap[i][j].Set_Gap(i,j,false);
+            comptB_++;
+         } else {
+            themap[i][j].P_.push_back(A_init);
+            themap[i][j].Set_Gap(i,j,true);
+            comptA_++;
+         }
+      }  
+   }
+}
+
 Environment::Environment(){
 	srand(time(NULL));
 	T_ = 1000;
@@ -154,7 +188,7 @@ void Environment::Run(){
 
 	ratiocell = ratiocell/1024; //percentage of A cell at the end of simulation.
 	cout << "T - value" << "," << "A_init" << ","<< "ratiocellfinal" << endl;
-    cout << T_ << "," << Gap().A_init << ","<< ratiocell << endl;
+    cout << T_ << "," << A_init << ","<< ratiocell << endl;
     fclose (stdout);
 } 
 
@@ -280,7 +314,7 @@ void Environment::Mutation(){
 void Environment::clear_Env(){
 	for(int i = 0; i <= (W_-1); i++){
       for(int j = 0; j <= (H_-1); j++){	
-			themap[i][j].P_.at(0)=themap[i][j].A_init;
+			themap[i][j].P_.at(0)= A_init;
 			themap[i][j].P_.at(1)=0;
 			themap[i][j].P_.at(2)=0;
 			themap[i][j].C_->Phenotype.at(0)=0;

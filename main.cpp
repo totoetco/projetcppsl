@@ -23,7 +23,7 @@ using std::endl;
 
 int main(int argc, char const *argv[]){
 	srand(time(NULL));
-	Environment* env1 = new Environment();
+	Environment* env1 = new Environment(35.5, 1000.0);
 	env1->Run();
 	return 0;
 }

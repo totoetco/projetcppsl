@@ -20,7 +20,7 @@ float Gap::D_ = 0.1;
 //    CONSTRUCTORS
 //==============================
 Gap::Gap(){
-	A_init=25.0;                                // Valeur comprise entre 0 et 50, à modifier	
+	A_init=49.0;                                // Valeur comprise entre 0 et 50, à modifier	
 }
 //==============================
 //    DESTRUCTOR
@@ -33,7 +33,6 @@ Gap::~Gap(){}
 void Gap::Set_Gap(int x,int y, bool is_A){
 	x_coord=x;
 	y_coord=y;                             // Valeur comprise entre 0 et 50, à modifier
-	P_.push_back(A_init);
 	P_.push_back(0.0);
 	P_.push_back(0.0);
 	if(is_A){

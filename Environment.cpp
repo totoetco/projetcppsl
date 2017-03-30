@@ -52,36 +52,6 @@ Environment::Environment(float Ainit, float T){
       }  
    }
 }
-
-Environment::Environment(){
-	srand(time(NULL));
-	T_ = 1000;
-	D_ = 0.1;
-	int Max_ = (W_ * H_)/2.0;
-	int comptA_ = 0;
-	int comptB_ = 0;
-   themap = new Gap*[H_];
-   for (int i = 0; i < H_; i++){
-      this->themap[i] = new Gap[W_];
-      for (int j = 0; j < W_; j++){
-      	bool randbool = rand() & 1;
-      	if (comptA_ < Max_ && comptB_ < Max_){
-      		themap[i][j].Set_Gap(i,j,randbool);
-      		if (randbool == true){
-      			comptA_++;
-      		} else {
-      			comptB_++;
-      		}
-      	} else if (comptA_ >= Max_){
-      		themap[i][j].Set_Gap(i,j,false);
-      		comptB_++;
-      	} else {
-      		themap[i][j].Set_Gap(i,j,true);
-      		comptA_++;
-      	}
-      }	
-   }
-}
 //==============================
 //    DESTRUCTOR
 //==============================
@@ -148,7 +118,6 @@ void Environment::Diffusion(int x, int y){
 }
 
 void Environment::Run(){
-    freopen("output.txt","w",stdout);
 	int T = 0;
 	float ratiocell = 0;
 	for(int t=0;t<t_sim;t++){
@@ -187,9 +156,7 @@ void Environment::Run(){
 	}
 
 	ratiocell = ratiocell/1024; //percentage of A cell at the end of simulation.
-	cout << "T - value" << "," << "A_init" << ","<< "ratiocellfinal" << endl;
     cout << T_ << "," << A_init << ","<< ratiocell << endl;
-    fclose (stdout);
 } 
 
 void Environment::Division(){

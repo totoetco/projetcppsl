@@ -22,7 +22,7 @@ using std::endl;
 
 int main(int argc, char const *argv[]){
 	freopen("output.txt","w",stdout);
-	cout << "T - value" << "," << "A_init" << ","<< "ratiocellfinal" << endl;
+	cout << "t_value" << "," << "A_init" << ","<< "ratiocellfinal" << endl;
 	srand(time(NULL));
 	for (int Tvalue = 1; Tvalue < 1500; Tvalue+= 500){
    		for (int Ainitvalue = 0; Ainitvalue < 50; Ainitvalue+=20){
